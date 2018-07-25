@@ -13,11 +13,11 @@ header("location: login");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tambah Entri Buku</title>
     <link href="<?php echo base_url('assets/css/bootstrap.css');?>" rel="stylesheet">
-      
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets/css/dashboard.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/theme.css');?>" rel="stylesheet">
-    
+
     <style>
         .navbar {
             background-color: dodgerblue;
@@ -34,7 +34,7 @@ header("location: login");
             background-color: darkorange;
         }
         tr:hover {background-color: #a4a4a4;}
-        th 
+        th
         {
             background-color: #4CAF50;
             color: white;
@@ -46,7 +46,7 @@ header("location: login");
             border: none;
         }
         tr:nth-child(even) {background-color: #f2f2f2;}
-        .active a 
+        .active a
         {
           border-bottom: 3px solid #ffe400;
           background-color: #ffe400 !important;
@@ -91,15 +91,15 @@ header("location: login");
             <li class="active"><a href="hom_admin">Daftar Buku <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <div class="row placeholders">
               <form action="<?php echo site_url('welcome/addbuk')?>" method="POST">
                 <h2 class="form-signin-heading">Tambah Buku</h2>
-                <input name="ISBN" type="text" id="inputISBN" class="form-control " placeholder="ISBN" required autofocus ><br/>
-                <input type="text" name="judul_buku" id="inputJudul" class="form-control" placeholder="Judul Buku" required><br/>
-                <input name="pengarang" type="text" id="inputPengarang" class="form-control" placeholder="Pengarang" required><br/>
-                <input type="text" name="penerbit" id="inputPenerbit" class="form-control" placeholder="Penerbit" required><br/>
-                <input name="jenis" type="text" id="inputJenis" class="form-control" placeholder="Jenis Buku" required><br/><br/><br/><br/>
+                <input name="ISBN" type="text" id="inputISBN" class="form-control " placeholder="ISBN" autofocus ><br/>
+                <input type="text" name="judul_buku" id="inputJudul" class="form-control" placeholder="Judul Buku" ><br/>
+                <input name="pengarang" type="text" id="inputPengarang" class="form-control" placeholder="Pengarang" ><br/>
+                <input type="text" name="penerbit" id="inputPenerbit" class="form-control" placeholder="Penerbit" ><br/>
+                <input name="jenis" type="text" id="inputJenis" class="form-control" placeholder="Jenis Buku" ><br/><br/><br/><br/>
                 <button class="btn btn-lg btn-primary btn-block btn-success" type="submit" >Terapkan</button>
                 <br/><br/><br/>
               </form>

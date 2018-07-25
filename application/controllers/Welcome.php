@@ -147,25 +147,44 @@ class Welcome extends CI_Controller {
         }
         public function addbuk() {
         $ISBN =$this->input->post('ISBN');
-		$judul_buku =$this->input->post('judul_buku');
+				$judul_buku =$this->input->post('judul_buku');
         $pengarang =$this->input->post('pengarang');
         $penerbit =$this->input->post('penerbit');
         $jenis =$this->input->post('jenis');
+				$result = $this->Buku->checkCreate($ISBN,$judul_buku);
+				if($ISBN != null && $judul_buku != null && $pengarang != null && $penerbit != null && $jenis != null){
+					if(!empty($result)){
+						$message = "Similar data on table.\\nTry again.";
+			      echo "<script type='text/javascript'>
 
-            $data = array
+						alert('$message');
+						</script>";
+			      $this->load->view('view-add');
+					}
+					else{
+					$data = array
 				(
 					'ISBN'   =>$ISBN,
 					'judul_buku'   => $judul_buku,
-                    'pengarang'   => $pengarang,
-                    'penerbit'   => $penerbit,
-                    'jenis'   => $jenis,
+          'pengarang'   => $pengarang,
+          'penerbit'   => $penerbit,
+          'jenis'   => $jenis,
 				);
-			$insert= $this->Buku->add($data);
-            redirect('Welcome/hom_admin');
+				$insert= $this->Buku->add($data);
+          redirect('Welcome/hom_admin');}
+				}
+				else {
+				$message = "Has one or more without field.\\nTry again.";
+	      echo "<script type='text/javascript'>
+
+				alert('$message');
+				</script>";
+	      $this->load->view('view-add', $data);
+				}
         }
         public function directtoborrow() {
         $ISBN =$this->input->post('ISBN');
-		$judul_buku =$this->input->post('judul_buku');
+				$judul_buku =$this->input->post('judul_buku');
         $pengarang =$this->input->post('pengarang');
         $penerbit =$this->input->post('penerbit');
         $jenis =$this->input->post('jenis');
