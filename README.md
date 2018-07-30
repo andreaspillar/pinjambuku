@@ -4,8 +4,9 @@ Ini adalah tugas rancang untuk mata kuliah
 CodeIgniter sebagai framework standar
 Bootstrap bersama templatenya
 ## Apa saja yang ditambahkan?
-Penambahan tabel ```buku``` untuk database perpustakaan
-Pada tabel ```peminjaman``` telah ditambahkan kolom ```tgl_pinjam``` untuk melihat tanggal peminjaman dan ```tgl_kembali``` untuk melihat tanggal kembali
+<ul>Penambahan tabel ```buku``` untuk database perpustakaan</ul>
+<ul>Pada tabel ```peminjaman``` telah ditambahkan kolom ```tgl_pinjam``` untuk melihat tanggal peminjaman dan ```tgl_kembali``` untuk melihat tanggal kembali</ul>
+<ul>Penambahan javascript pada insert buku</ul>
 ## Tutorial
 ### Menambahkan File PHP
 Ingin menjalankan web ini?
