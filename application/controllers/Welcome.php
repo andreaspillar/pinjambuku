@@ -179,7 +179,7 @@ class Welcome extends CI_Controller {
 
 				alert('$message');
 				</script>";
-	      $this->load->view('view-add', $data);
+	      $this->load->view('view-add');
 				}
         }
         public function directtoborrow() {
@@ -298,5 +298,26 @@ class Welcome extends CI_Controller {
 			    }
 	        }
 	        }
+				}
+				function checkISBN(){
+					$usr=$this->input->post('username');
+					if (is_numeric($usr)) {
+						if ($this->Buku->isbn_availability($usr)) {
+							echo '<label class="text-danger">ISBN Already register</label>';
+						} else {
+							echo '<label class="text-success">ISBN Available</label>';
+						}
+					} else {
+						 echo '<label class="text-danger">ISBN Must Be Numbers!</label>';
+					}
+				}
+				function checkAuthT(){
+					$ath=$this->input->post('pengarang');
+					$ttl=$this->input->post('judul_buku');
+					if ($this->Buku->auth_title_conflict($ath, $ttl)) {
+						echo '<label class="text-danger">Book Title and Author Conflict, Check the Book Title and Author field!</label>';
+					} else {
+						echo '<label class="text-success">Checked!</label>';
+					}
 				}
 }

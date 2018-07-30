@@ -63,6 +63,28 @@ class Buku extends CI_Model{
 		return $this->db->affected_rows();
 	}
 
+	function isbn_availability($ISBN)
+	{
+		$this->db->where('ISBN',$ISBN);
+		$query=$this->db->get($this->table);
+		if($query->num_rows() > 0){
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	function auth_title_conflict($ath,$ttl){
+		$this->db->where('judul_buku',$ttl);
+		$this->db->where_in('pengarang',$ath);
+		$query=$this->db->get($this->table);
+		if($query->num_rows() > 0){
+			return true;
+		}else {
+			return false;
+		}
+	}
+
     function search($keyword)
     {
         $this->db->like('judul_buku',$keyword);

@@ -13,11 +13,11 @@ header("location: login");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tambah Entri Buku</title>
     <link href="<?php echo base_url('assets/css/bootstrap.css');?>" rel="stylesheet">
-
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-min.js');?>"></script>
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets/css/dashboard.css');?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/theme.css');?>" rel="stylesheet">
-
     <style>
         .navbar {
             background-color: dodgerblue;
@@ -95,9 +95,11 @@ header("location: login");
           <div class="row placeholders">
               <form action="<?php echo site_url('welcome/addbuk')?>" method="POST">
                 <h2 class="form-signin-heading">Tambah Buku</h2>
-                <input name="ISBN" type="text" id="inputISBN" class="form-control " placeholder="ISBN" autofocus ><br/>
+                <input name="ISBN" type="text" id="inputISBN" class="form-control " placeholder="ISBN" autofocus >
+                <span id="ISBNres"></span><br/>
                 <input type="text" name="judul_buku" id="inputJudul" class="form-control" placeholder="Judul Buku" ><br/>
-                <input name="pengarang" type="text" id="inputPengarang" class="form-control" placeholder="Pengarang" ><br/>
+                <input name="pengarang" type="text" id="inputPengarang" class="form-control" placeholder="Pengarang" >
+                <span id="judpenres"></span><br/>
                 <input type="text" name="penerbit" id="inputPenerbit" class="form-control" placeholder="Penerbit" ><br/>
                 <input name="jenis" type="text" id="inputJenis" class="form-control" placeholder="Jenis Buku" ><br/><br/><br/><br/>
                 <button class="btn btn-lg btn-primary btn-block btn-success" type="submit" >Terapkan</button>
@@ -111,8 +113,45 @@ header("location: login");
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script> -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+      $('#inputISBN').keyup(function(){
+      var username = $('#inputISBN').val();
+      if(username != ''){
+        $.ajax({
+          url: "<?php echo base_url();?>index.php/welcome/checkISBN",
+          method: "POST",
+          data: {username:username},
+          success: function(data){
+            $('#ISBNres').html(data);
+     }
+    });
+   }
+  });
+//selesai
+ });
+</script>
+<script>
+    $(document).ready(function(){
+    $('#inputPengarang').keyup(function(){
+    var judul_buku = $('#inputJudul').val();
+    var pengarang = $('#inputPengarang').val();
+    if(pengarang != ''){
+      $.ajax({
+        url: "<?php echo base_url();?>index.php/welcome/checkAuthT",
+        method: "POST",
+        data: {pengarang:pengarang,
+               judul_buku:judul_buku},
+        success: function(data){
+          $('#judpenres').html(data);
+    }
+    });
+    }
+    });
+    });
+</script>
     </body>
 </html>
